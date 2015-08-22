@@ -20,7 +20,6 @@ RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 # Configure /app folder with iTop
 RUN rm -fr /app
 RUN mkdir -p /app && cp -r /tmp/itop/web/* /app && rm -rf /tmp/itop
-#RUN mkdir -p /app/conf /app/logs /app/data
 
 # Get latest Russian translations
 RUN /update-russian-translations.sh

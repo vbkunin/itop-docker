@@ -8,13 +8,19 @@ RUN php5enmod mcrypt ldap gd
 
 # Add update Russian translations script
 ADD update-russian-translations.sh /update-russian-translations.sh
+
+# Add Portal Announcement Extension install script
+ADD install-portal-announcement.sh /install-portal-announcement.sh
+ADD update-portal-announcement.sh /update-portal-announcement.sh
+
+# Add iTop config-file rights management scripts
 ADD make-itop-config-writable.sh /make-itop-config-writable.sh
 ADD make-itop-config-read-only.sh /make-itop-config-read-only.sh
 RUN chmod 755 /*.sh
 
-# Get iTop 2.2.0-beta
+# Get iTop 2.2.0
 RUN mkdir -p /tmp/itop
-RUN wget -O /tmp/itop/itop.zip http://downloads.sourceforge.net/project/itop/itop/2.2.0-beta/iTop-2.2.0-beta-2371.zip
+RUN wget -O /tmp/itop/itop.zip http://sourceforge.net/projects/itop/files/itop/2.2.0/iTop-2.2.0-2459.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 
 # Configure /app folder with iTop

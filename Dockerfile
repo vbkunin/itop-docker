@@ -27,9 +27,9 @@ ADD install-toolkit.sh /install-toolkit.sh
 
 RUN chmod 755 /*.sh
 
-# Get iTop 2.2.1
+# Get iTop 2.3.1
 RUN mkdir -p /tmp/itop
-RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.3.0-beta/iTop-2.3.0-beta-2777.zip
+RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.3.1/iTop-2.3.1-2832.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 
 # Configure /app folder with iTop

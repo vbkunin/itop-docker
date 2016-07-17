@@ -4,9 +4,9 @@ Combodo iTop docker image based on [tutum/lamp](https://hub.docker.com/r/tutum/l
 
 ## Usage
 
-Run new iTop 2.3.0-beta (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 2.3.1 (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.3.0-beta
+sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.3.1
 ```
 Then go to [http://localhost/](http://localhost/) to continue the installation.
 
@@ -18,7 +18,7 @@ or use username *root* with blank password.
 
 Expose MySQL port or iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.3.0-beta
+sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.3.1
 ```
 
 The image ships with several useful scripts you can run like this:
@@ -42,7 +42,7 @@ There are other scripts:
  - make-itop-config-writable.sh
  - make-itop-config-read-only.sh
  - update-russian-translations.sh - pull and install latest version from https://github.com/itop-itsm-ru/itop-rus
- - install-portal-announcement.sh - install an additional module [Portal Announcement](https://github.com/itop-itsm-ru/portal-announcement)
+ - install-portal-announcement.sh - install an additional module [Portal Announcement](https://github.com/itop-itsm-ru/portal-announcement) (only for legacy Portal)
 
 ## Links
 

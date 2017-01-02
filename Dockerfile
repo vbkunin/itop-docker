@@ -6,24 +6,24 @@ RUN apt-get update && \
   apt-get -y install php5-mcrypt php5-gd php5-ldap php5-cli php-soap php5-json graphviz wget unzip
 RUN php5enmod mcrypt ldap gd
 
-# Add cron config and scripts
-ADD supervisord-cron.conf /etc/supervisor/conf.d/supervisord-cron.conf
-ADD start-cron.sh /start-cron.sh
-ADD setup-itop-cron.sh /setup-itop-cron.sh
+# Copy cron config and scripts
+COPY artifacts/supervisord-cron.conf /etc/supervisor/conf.d/supervisord-cron.conf
+COPY artifacts/start-cron.sh /start-cron.sh
+COPY artifacts/setup-itop-cron.sh /setup-itop-cron.sh
 
-# Add update Russian translations script
-ADD update-russian-translations.sh /update-russian-translations.sh
+# Copy update Russian translations script
+COPY artifacts/update-russian-translations.sh /update-russian-translations.sh
 
-# Add Portal Announcement Extension install script
-ADD install-portal-announcement.sh /install-portal-announcement.sh
-ADD update-portal-announcement.sh /update-portal-announcement.sh
+# Copy Portal Announcement Extension install script
+COPY artifacts/install-portal-announcement.sh /install-portal-announcement.sh
+COPY artifacts/update-portal-announcement.sh /update-portal-announcement.sh
 
-# Add iTop config-file rights management scripts
-ADD make-itop-config-writable.sh /make-itop-config-writable.sh
-ADD make-itop-config-read-only.sh /make-itop-config-read-only.sh
+# Copy iTop config-file rights management scripts
+COPY artifacts/make-itop-config-writable.sh /make-itop-config-writable.sh
+COPY artifacts/make-itop-config-read-only.sh /make-itop-config-read-only.sh
 
-# Add Tookit installation script
-ADD install-toolkit.sh /install-toolkit.sh
+# Copy Tookit installation script
+COPY artifacts/install-toolkit.sh /install-toolkit.sh
 
 RUN chmod 755 /*.sh
 

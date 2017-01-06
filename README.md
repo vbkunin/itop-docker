@@ -7,9 +7,9 @@ Combodo iTop docker image based on [tutum/lamp](https://hub.docker.com/r/tutum/l
 
 ## Usage
 
-Run new iTop 2.3.1 (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 2.3.3 (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.3.1
+sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.3.3
 ```
 Then go to [http://localhost/](http://localhost/) to continue the installation.
 
@@ -21,7 +21,7 @@ or use username *root* with blank password.
 
 Expose MySQL port or iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.3.1
+sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.3.3
 ```
 
 The image ships with several useful scripts you can run like this:
@@ -38,7 +38,7 @@ A cron setup helper is aboard:
 ```
 sudo docker exec my-itop /setup-itop-cron.sh Cron Pa$5w0rD
 ```
-Then you should create iTop user account with login *Cron* and password *Pa$5w0rD* and grant him Administrator profile.
+Then you should create iTop user account with login *Cron* and password *Pa$5w0rD* and grant him Administrator profile. Starting from v2.3.3 the third argument (optional) is the absolute path to the log file or `--without-logs` key. By default, the log file is `/var/log/itop-cron.log`.
 
 There are other scripts:
 

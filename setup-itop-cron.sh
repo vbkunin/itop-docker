@@ -1,26 +1,33 @@
 #!/bin/bash
 USER=$1
 PWD=$2
-LOG_DIR=$3
-LOG_FILE=$4
+LOG_FILE=$3
 
 if [[ -z $USER ]] || [[ -z $PWD ]]; then
-	echo "Specify username and password of iTop cron profile as the first and the second argument."
-	echo "Usage: /setup-itop-cron.sh username password [log_folder [log_file]]"
+	echo "Specify username and password of iTop cron profile as the first and the second argument. Default log file is /var/log/itop-cron.log."
+	echo "Usage: /setup-itop-cron.sh <username> <password> [--without-logs | <log_file>]"
 	exit 1
 fi
 
-if [[ -z $LOG_DIR ]]; then
-	LOG_DIR=/dev/null
-	LOG_FILE=''
-elif [[ ! -d $LOG_DIR ]]; then
-	echo "Log folder $LOG_DIR not found."
-	exit 1
+if [[ $LOG_FILE == '--without-logs' ]]; then
+	LOG_FILE=/dev/null
 elif [[ -z $LOG_FILE ]]; then
-	LOG_FILE=itop-cron.log
+	LOG_FILE=/var/log/itop-cron.log
+elif [[ -z ${LOG_FILE##*/} ]]; then
+	echo "It looks like a directory name: $LOG_FILE. Did you forget to specify file name itself?"
+	exit 1	
+elif [[ ! -d $(dirname $LOG_FILE) ]]; then
+	echo "Log directory $(dirname $LOG_FILE)/ not found. Is it exists?"
+	exit 1	
 fi
 
-echo "*/5 * * * * root /usr/bin/php /app/webservices/cron.php --auth_user=$USER --auth_pwd=$PWD >> $LOG_DIR$LOG_FILE 2>&1" > /etc/cron.d/itop
-echo "Following job was added to cron:"
+echo "*/5 * * * * root /usr/bin/php /app/webservices/cron.php --auth_user=$USER --auth_pwd=$PWD >> $LOG_FILE 2>&1" > /etc/cron.d/itop
+echo -e "\nThe following job has been added to cron (/etc/cron.d/itop):"
 cat /etc/cron.d/itop
 
+if [[ $LOG_FILE != /dev/null ]]; then
+	sed -i -e "1s:^.*\( {\):$LOG_FILE\1:" /etc/logrotate.d/itop-cron
+	echo -e "\nThe logrotate config (/etc/logrotate.d/itop-cron):"
+	cat /etc/logrotate.d/itop-cron
+fi
+echo -e "\nBye!"

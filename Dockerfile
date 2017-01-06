@@ -3,13 +3,14 @@ MAINTAINER Vladimir Kunin <vladimir@itop-itsm.ru>
 
 # Install additional packages
 RUN apt-get update && \
-  apt-get -y install php5-mcrypt php5-gd php5-ldap php5-cli php-soap php5-json graphviz wget unzip
-RUN php5enmod mcrypt ldap gd
+  apt-get -y install php5-mcrypt php5-gd php5-ldap php5-cli php-soap php5-json php5-imap graphviz wget unzip
+RUN php5enmod mcrypt ldap gd imap
 
 # Add cron config and scripts
 ADD supervisord-cron.conf /etc/supervisor/conf.d/supervisord-cron.conf
 ADD start-cron.sh /start-cron.sh
 ADD setup-itop-cron.sh /setup-itop-cron.sh
+ADD itop-cron.logrotate /etc/logrotate.d/itop-cron
 
 # Add update Russian translations script
 ADD update-russian-translations.sh /update-russian-translations.sh

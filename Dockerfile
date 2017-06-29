@@ -28,9 +28,13 @@ COPY artifacts/install-toolkit.sh /install-toolkit.sh
 
 RUN chmod 755 /*.sh
 
-# Get iTop 2.3.3
+# Create shortcuts for the right management scripts
+RUN ln -s /make-itop-config-writable.sh /usr/local/bin/conf-w
+RUN ln -s /make-itop-config-read-only.sh /usr/local/bin/conf-ro
+
+# Get iTop 2.3.4
 RUN mkdir -p /tmp/itop
-RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.3.3/iTop-2.3.3-3159.zip
+RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.3.4/iTop-2.3.4-3302.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 
 # Configure /app folder with iTop

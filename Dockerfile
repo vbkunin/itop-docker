@@ -15,10 +15,6 @@ COPY artifacts/itop-cron.logrotate /etc/logrotate.d/itop-cron
 # Copy update Russian translations script
 COPY artifacts/update-russian-translations.sh /update-russian-translations.sh
 
-# Copy Portal Announcement Extension install script
-COPY artifacts/install-portal-announcement.sh /install-portal-announcement.sh
-COPY artifacts/update-portal-announcement.sh /update-portal-announcement.sh
-
 # Copy iTop config-file rights management scripts
 COPY artifacts/make-itop-config-writable.sh /make-itop-config-writable.sh
 COPY artifacts/make-itop-config-read-only.sh /make-itop-config-read-only.sh
@@ -32,9 +28,9 @@ RUN chmod 755 /*.sh
 RUN ln -s /make-itop-config-writable.sh /usr/local/bin/conf-w
 RUN ln -s /make-itop-config-read-only.sh /usr/local/bin/conf-ro
 
-# Get iTop 2.3.4
+# Get iTop 2.4.0-beta
 RUN mkdir -p /tmp/itop
-RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.3.4/iTop-2.3.4-3302.zip
+RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.4.0-beta/iTop-2.4.0-beta-3389.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 
 # Configure /app folder with iTop

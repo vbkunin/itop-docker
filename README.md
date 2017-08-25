@@ -7,9 +7,9 @@ Combodo iTop docker image based on [tutum/lamp](https://hub.docker.com/r/tutum/l
 
 ## Usage
 
-Run new iTop 2.3.4 (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 2.4.0-beta (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.3.4
+sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.4.0-beta
 ```
 Then go to [http://localhost/](http://localhost/) to continue the installation.
 
@@ -21,7 +21,7 @@ or use username *root* with blank password.
 
 Expose MySQL port or iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.3.4
+sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.4.0-beta
 ```
 
 The image ships with several useful scripts you can run like this:
@@ -29,7 +29,7 @@ The image ships with several useful scripts you can run like this:
 sudo docker exec my-itop /script-name.sh [script-params]
 ```
 
-If you need the [iTop Toolkit](https://wiki.openitop.org/doku.php?id=2_3_0:customization:datamodel#installing_the_toolkit) you can simply get this:
+If you need the [iTop Toolkit](https://wiki.openitop.org/doku.php?id=2_4_0:customization:datamodel#installing_the_toolkit) you can simply get this:
 ```
 sudo docker exec my-itop /install-toolkit.sh
 ```
@@ -45,7 +45,6 @@ There are other scripts:
  - make-itop-config-writable.sh (or you can use `conf-w` shortcut without the leading slash: `docker exec my-itop conf-w`)
  - make-itop-config-read-only.sh (or `conf-ro` shortcut: `docker exec my-itop conf-ro`)
  - update-russian-translations.sh - pull and install latest version from https://github.com/itop-itsm-ru/itop-rus
- - install-portal-announcement.sh - install an additional module [Portal Announcement](https://github.com/itop-itsm-ru/portal-announcement) (only for legacy Portal)
 
 ## Links
 

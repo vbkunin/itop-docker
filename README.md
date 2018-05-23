@@ -7,9 +7,9 @@ Combodo iTop docker image based on [tutum/lamp](https://hub.docker.com/r/tutum/l
 
 ## Usage
 
-Run new iTop 2.4.0 (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 2.4.1 (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.4.0
+sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.4.1
 ```
 Then go to [http://localhost/](http://localhost/) to continue the installation.
 
@@ -21,7 +21,7 @@ or use username *root* with blank password.
 
 Expose MySQL port or iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.4.0
+sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.4.1
 ```
 
 The image ships with several useful scripts you can run like this:
@@ -29,7 +29,7 @@ The image ships with several useful scripts you can run like this:
 sudo docker exec my-itop /script-name.sh [script-params]
 ```
 
-If you need the [iTop Toolkit](https://wiki.openitop.org/doku.php?id=2_4_0:customization:datamodel#installing_the_toolkit) you can simply get this:
+If you need the [iTop Toolkit](https://www.itophub.io/wiki/page?id=2_4_0:customization:datamodel#installing_the_toolkit) you can simply get this:
 ```
 sudo docker exec my-itop /install-toolkit.sh
 ```
@@ -51,5 +51,5 @@ There are other scripts:
  - [Combodo](https://combodo.com)
  - [tutum/lamp image](https://hub.docker.com/r/tutum/lamp/)
  - [iTop Russian community](http://community.itop-itsm.ru)
- - [Some extensions for iTop](https://github.com/itop-itsm-ru)
+ - [Some extensions for iTop](https://github.com/knowitop)
 

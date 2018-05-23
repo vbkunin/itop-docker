@@ -28,9 +28,9 @@ RUN chmod 755 /*.sh
 RUN ln -s /make-itop-config-writable.sh /usr/local/bin/conf-w
 RUN ln -s /make-itop-config-read-only.sh /usr/local/bin/conf-ro
 
-# Get iTop 2.4.0
+# Get iTop 2.4.1
 RUN mkdir -p /tmp/itop
-RUN wget --no-check-certificate -O /tmp/itop/itop.zip https://downloads.sourceforge.net/project/itop/itop/2.4.0/iTop-2.4.0-3585.zip
+RUN wget --no-check-certificate -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.4.1/iTop-2.4.1-3714.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 
 # Configure /app folder with iTop

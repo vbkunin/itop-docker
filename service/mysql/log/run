@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+LOG_FOLDER=/var/log/mysql
+mkdir -p $LOG_FOLDER
+exec svlogd -tt $LOG_FOLDER

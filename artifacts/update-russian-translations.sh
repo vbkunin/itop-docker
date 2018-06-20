@@ -1,5 +1,5 @@
 #!/bin/bash
-APP_PATH=/app
+APP_PATH=/var/www/html
 TEMP_PATH=/tmp/itop-rus
 if [[ -d $APP_PATH/datamodels && -d $APP_PATH/dictionaries ]]; then
     rm -rf $TEMP_PATH

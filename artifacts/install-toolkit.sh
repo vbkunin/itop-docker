@@ -1,5 +1,5 @@
 #!/bin/bash
-APP_PATH=/app
+APP_PATH=/var/www/html
 TOOLKIT_URL=http://www.combodo.com/documentation/iTopDataModelToolkit-2.3.zip
 TOOLKIT_FOLDER=$APP_PATH/toolkit
 

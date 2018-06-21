@@ -1,9 +1,9 @@
 #!/bin/bash
 USER=$1
-PWD=$2
+PASSWORD=$2
 LOG_FILE=$3
 
-if [[ -z $USER ]] || [[ -z $PWD ]]; then
+if [[ -z $USER ]] || [[ -z $PASSWORD ]]; then
 	echo "Specify username and password of iTop cron profile as the first and the second argument. Default log file is /var/log/itop-cron.log."
 	echo "Usage: /setup-itop-cron.sh <username> <password> [--without-logs | <log_file>]"
 	exit 1
@@ -21,7 +21,7 @@ elif [[ ! -d $(dirname $LOG_FILE) ]]; then
 	exit 1	
 fi
 
-echo "*/5 * * * * root /usr/bin/php /app/webservices/cron.php --auth_user=$USER --auth_pwd=$PWD >> $LOG_FILE 2>&1" > /etc/cron.d/itop
+echo "*/5 * * * * root /usr/bin/php /var/www/html/webservices/cron.php --auth_user=$USER --auth_pwd=$PASSWORD >> $LOG_FILE 2>&1" > /etc/cron.d/itop
 echo -e "\nThe following job has been added to cron (/etc/cron.d/itop):"
 cat /etc/cron.d/itop
 

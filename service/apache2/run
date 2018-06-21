@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec /usr/sbin/apachectl -DNO_DETACH -k start -e debug
+exec /usr/sbin/apachectl -DNO_DETACH -k start

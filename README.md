@@ -21,7 +21,7 @@ or use username *root* with blank password.
 
 Expose MySQL port or iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/app/extensions vbkunin/itop:2.5.0-beta
+sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.5.0-beta
 ```
 
 The image ships with several useful scripts you can run like this:

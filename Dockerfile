@@ -37,7 +37,7 @@ RUN ln -s /make-itop-config-read-only.sh /usr/local/bin/conf-ro
 
 # Get iTop
 RUN mkdir -p /tmp/itop
-RUN wget --no-check-certificate -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.5.0-beta/iTop-2.5.0-beta-3804.zip
+RUN wget --no-check-certificate -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.5.0/iTop-2.5.0-3935.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 RUN mv /tmp/itop/web/* /var/www/html
 

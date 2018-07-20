@@ -1,15 +1,15 @@
 # Docker image with Combodo iTop
 
-Starting from 2.5.0-beta the image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/) and uses runit to manage services (apache, mysql, etc).
+Starting from 2.5.0 the image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/) and uses runit to manage services (apache, mysql, etc).
 
 [![](https://images.microbadger.com/badges/version/vbkunin/itop.svg)](http://microbadger.com/images/vbkunin/itop "Get your own version badge on microbadger.com")
 [![](https://images.microbadger.com/badges/image/vbkunin/itop.svg)](https://microbadger.com/images/vbkunin/itop "Get your own image badge on microbadger.com")
 
 ## Usage
 
-Run new iTop 2.5.0-beta (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 2.5.0 (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.5.0-beta
+sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.5.0
 ```
 Then go to [http://localhost/](http://localhost/) to continue the installation.
 
@@ -21,7 +21,7 @@ or use username *root* with blank password.
 
 Expose MySQL port or iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.5.0-beta
+sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.5.0
 ```
 
 The image ships with several useful scripts you can run like this:

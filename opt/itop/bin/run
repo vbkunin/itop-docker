@@ -13,3 +13,4 @@ else
 fi
 
 exec /sbin/my_init
+

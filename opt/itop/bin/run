@@ -7,9 +7,10 @@ if [[ ! -d $VOLUME_HOME/mysql ]]; then
     echo "=> Installing MySQL ..."
     mysql_install_db > /dev/null 2>&1
     echo "=> Done!"
-    /create-mysql-admin-user.sh
+    /opt/itop/bin/create-mysql-admin-user
 else
     echo "=> Using an existing volume of MySQL"
 fi
 
 exec /sbin/my_init
+

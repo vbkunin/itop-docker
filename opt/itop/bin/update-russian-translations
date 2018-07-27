@@ -14,7 +14,7 @@ if [[ -d $APP_PATH/datamodels && -d $APP_PATH/dictionaries ]]; then
             cp -rf $SRC/* $DST
     fi
     done
-    /make-itop-config-writable.sh
+    /opt/itop/bin/make-config-writable
 else
     echo "Directories $APP_PATH/datamodels and $APP_PATH/dictionaries not found"
 fi

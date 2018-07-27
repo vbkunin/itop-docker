@@ -28,6 +28,7 @@ RUN apt-get install -y software-properties-common \
       unzip \
       wget \
       pwgen \
+ && a2enmod rewrite \
   # Remove pre-installed database and apache demo data
  && rm -rf \
       /etc/apache2/sites-available/000-default.conf \

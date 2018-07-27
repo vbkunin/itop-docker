@@ -25,9 +25,9 @@ RUN apt-get install -y software-properties-common \
       php7.1-soap \
       php7.1-xml \
       php7.1-zip \
+      pwgen \
       unzip \
       wget \
-      pwgen \
  && a2enmod rewrite \
   # Remove pre-installed database and apache demo data
  && rm -rf \

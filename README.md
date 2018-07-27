@@ -26,25 +26,25 @@ sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-exten
 
 The image ships with several useful scripts you can run like this:
 ```
-sudo docker exec my-itop /script-name.sh [script-params]
+sudo docker exec my-itop /opt/itop/bin/script-name [script-params]
 ```
 
 If you need the [iTop Toolkit](https://www.itophub.io/wiki/page?id=2_4_0:customization:datamodel#installing_the_toolkit) you can simply get this:
 ```
-sudo docker exec my-itop /install-toolkit.sh
+sudo docker exec my-itop /opt/itop/bin/install-toolkit
 ```
 
 A cron setup helper is aboard:
 ```
-sudo docker exec my-itop /setup-itop-cron.sh Cron Pa$5w0rD
+sudo docker exec my-itop /opt/itop/bin/setup-itop-cron Cron Pa$5w0rD
 ```
 Then you should create iTop user account with login *Cron* and password *Pa$5w0rD* and grant him Administrator profile. Starting from v2.3.3 the third argument (optional) is the absolute path to the log file or `--without-logs` key. By default, the log file is `/var/log/itop-cron.log`.
 
 There are other scripts:
 
- - make-itop-config-writable.sh (or you can use `conf-w` shortcut without the leading slash: `docker exec my-itop conf-w`)
- - make-itop-config-read-only.sh (or `conf-ro` shortcut: `docker exec my-itop conf-ro`)
- - update-russian-translations.sh - pull and install latest version from https://github.com/itop-itsm-ru/itop-rus
+ - /opt/itop/bin/make-config-writable (or you can use `conf-w` shortcut without the leading slash: `docker exec my-itop conf-w`)
+ - /opt/itop/bin/make-config-read-only (or `conf-ro` shortcut: `docker exec my-itop conf-ro`)
+ - /opt/itop/bin/update-russian-translations - pull and install latest version from https://github.com/itop-itsm-ru/itop-rus
 
 ## Links
 

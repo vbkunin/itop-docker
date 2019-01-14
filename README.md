@@ -9,7 +9,7 @@ Starting from 2.5.0-beta the image is based on [phusion/baseimage](https://hub.d
 
 Run new iTop 2.6.0-beta (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 80:80 --name=my-itop vbkunin/2.6.0-beta
+sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.6.0-beta
 ```
 Then go to [http://localhost/](http://localhost/) to continue the installation.
 

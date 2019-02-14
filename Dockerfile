@@ -3,6 +3,7 @@ MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG NO_DATABASE=false
+ENV no_database=$NO_DATABASE
 
 RUN apt-get install -y software-properties-common \
  && add-apt-repository -y ppa:ondrej/php \
@@ -57,4 +58,4 @@ VOLUME /var/lib/mysql
 EXPOSE 80
 HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ || exit 1
 
-CMD ["/run.sh"]
+ENTRYPOINT ["/run.sh"]

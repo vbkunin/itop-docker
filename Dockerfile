@@ -2,6 +2,7 @@ FROM phusion/baseimage
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG NO_DATABASE=false
 
 RUN apt-get install -y software-properties-common \
  && add-apt-repository -y ppa:ondrej/php \
@@ -10,10 +11,10 @@ RUN apt-get install -y software-properties-common \
 RUN apt-get install -y \
     apache2 \
     php7.1 php7.1-xml php7.1-mysql php7.1-json php7.1-mcrypt php7.1-mbstring php7.1-ldap php7.1-soap php7.1-zip php7.1-gd \
-    graphviz \
+    graphviz curl \
     git wget unzip
 
-RUN apt-get install -y mariadb-server pwgen
+RUN if [ "x$NO_DATABASE" = "true" ] ; then apt-get install -y mariadb-server pwgen ; fi
 # Remove pre-installed database and apache demo data
 RUN rm -rf /var/lib/mysql/* /var/www/html/*
 
@@ -53,6 +54,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 VOLUME /var/lib/mysql
 
-EXPOSE 80 3306
+EXPOSE 80
+HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ || exit 1
 
 CMD ["/run.sh"]

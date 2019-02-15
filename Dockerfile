@@ -15,7 +15,7 @@ RUN apt-get install -y \
     graphviz curl \
     git wget unzip
 
-RUN if [ "x$NO_DATABASE" = "true" ] ; then apt-get install -y mariadb-server pwgen ; fi
+RUN if [ "x$NO_DATABASE" == false ] ; then apt-get install -y mariadb-server pwgen ; fi
 # Remove pre-installed database and apache demo data
 RUN rm -rf /var/lib/mysql/* /var/www/html/*
 

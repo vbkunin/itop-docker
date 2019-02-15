@@ -2,6 +2,8 @@ FROM phusion/baseimage
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
+# Provide Build-Argument to skip MySQL installation
+# Use with '--build-args NO_DATABASE true' during docker build
 ARG NO_DATABASE=false
 ENV no_database=$NO_DATABASE
 
@@ -15,7 +17,7 @@ RUN apt-get install -y \
     graphviz curl \
     git wget unzip
 
-RUN if [ $NO_DATABASE == false ] ; then apt-get install -y mariadb-server pwgen ; fi
+RUN if [ "$NO_DATABASE" = false ]; then apt-get install -y mariadb-server pwgen ; fi
 # Remove pre-installed database and apache demo data
 RUN rm -rf /var/lib/mysql/* /var/www/html/*
 

@@ -3,7 +3,7 @@ MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
 # Provide Build-Argument to skip MySQL installation
-# Use with '--build-args NO_DATABASE true' during docker build
+# Use with '--build-arg NO_DATABASE=true' during docker build
 ARG NO_DATABASE=false
 ENV no_database=$NO_DATABASE
 

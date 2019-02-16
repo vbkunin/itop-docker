@@ -4,7 +4,7 @@ VOLUME_HOME="/var/lib/mysql"
 
 if [[ "$no_database" != false ]]; then
     echo "=> Using external MySQL server"
-    apachectl -DFOREGROUND
+    apachectl -DFOREGROUND || sleep infinity
 else
     if [[ ! -d $VOLUME_HOME/mysql ]]; then
         echo "=> An empty or uninitialized MySQL volume is detected in $VOLUME_HOME"

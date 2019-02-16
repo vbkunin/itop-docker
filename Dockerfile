@@ -2,8 +2,6 @@ FROM phusion/baseimage
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG NO_DATABASE=false
-ENV no_database=$NO_DATABASE
 
 RUN apt-get install -y software-properties-common \
  && add-apt-repository -y ppa:ondrej/php \
@@ -15,7 +13,7 @@ RUN apt-get install -y \
     graphviz curl \
     git wget unzip
 
-RUN if [ "x$NO_DATABASE" = "true" ] ; then apt-get install -y mariadb-server pwgen ; fi
+RUN apt-get install -y mariadb-server pwgen
 # Remove pre-installed database and apache demo data
 RUN rm -rf /var/lib/mysql/* /var/www/html/*
 
@@ -55,7 +53,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 VOLUME /var/lib/mysql
 
-EXPOSE 80
+EXPOSE 80 3306
 HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ || exit 1
 
 ENTRYPOINT ["/run.sh"]

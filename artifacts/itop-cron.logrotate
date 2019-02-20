@@ -1,7 +1,0 @@
-/var/log/itop-cron.log {
-  rotate 10
-  size=16M
-  compress
-  missingok
-  notifempty
-}

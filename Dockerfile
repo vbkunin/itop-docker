@@ -2,8 +2,8 @@ FROM phusion/baseimage
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG ITOP_VERSION=2.6.0-beta
-ARG ITOP_FILENAME=iTop-2.6-beta-4146.zip
+ARG ITOP_VERSION=2.6.0
+ARG ITOP_FILENAME=iTop-2.6.0-4294.zip
 
 RUN apt-get install -y software-properties-common \
  && add-apt-repository -y ppa:ondrej/php \

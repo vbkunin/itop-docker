@@ -2,6 +2,8 @@ FROM phusion/baseimage
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG ITOP_VERSION=2.6.0-beta
+ARG ITOP_FILENAME=iTop-2.6-beta-4146.zip
 
 RUN apt-get install -y software-properties-common \
  && add-apt-repository -y ppa:ondrej/php \
@@ -15,7 +17,7 @@ RUN apt-get install -y \
 
 # Get iTop
 RUN mkdir -p /tmp/itop
-RUN wget --no-check-certificate -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.6.0-beta/iTop-2.6-beta-4146.zip/download
+RUN wget --no-check-certificate -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/$ITOP_VERSION/$ITOP_FILENAME/download
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 RUN rm -rf /var/www/html/* && mv /tmp/itop/web/* /var/www/html
 

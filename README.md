@@ -7,9 +7,9 @@ Starting from 2.5.0-beta the image is based on [phusion/baseimage](https://hub.d
 
 ## Usage
 
-Run new iTop 2.6.0-beta (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 2.6.0 (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.6.0-beta
+sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.6.0
 ```
 Then go to [http://localhost/](http://localhost/) to continue the installation.
 
@@ -21,12 +21,22 @@ or use username *root* with blank password.
 
 Expose MySQL port or iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/2.6.0-beta
+sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.6.0
 ```
+
+### Image without MySQL
+
+Starting from 2.6.0 you can get `base` image without MySQL database server (only Apache and php7.1) to use with your own one:
+
+```
+sudo docker run -d -p 80:80 --name=my-itop vbkunin/itop:2.6.0-base
+```
+
+### Useful scripts and helpers
 
 The image ships with several useful scripts you can run like this:
 ```
-sudo docker exec my-itop /script-name.sh [script-params]
+sudo docker exec my-itop /script-name.sh [script_params]
 ```
 
 If you need the [iTop Toolkit](https://www.itophub.io/wiki/page?id=2_5_0:customization:datamodel#installing_the_toolkit) you can simply get this:
@@ -45,6 +55,20 @@ There are other scripts:
  - make-itop-config-writable.sh (or you can use `conf-w` shortcut without the leading slash: `docker exec my-itop conf-w`)
  - make-itop-config-read-only.sh (or `conf-ro` shortcut: `docker exec my-itop conf-ro`)
  - update-russian-translations.sh - pull and install latest version from https://github.com/itop-itsm-ru/itop-rus
+
+#### Developer's corner
+
+If you're using this image for development (especially with PhpStorm), there are a few things for you.
+
+- install-xdebug.sh – install [Xdebug](https://xdebug.org) PHP extension and setup it for [remote debugging](https://xdebug.org/docs/remote). Two arguments are `xdebug.remote_port` and `xdebug.idekey` (defaults are `9000` and `PHPSTORM`, respectively).
+```
+sudo docker exec my-itop /install-xdebug.sh [remote_port] [idekey]
+```
+
+- start-itop-cron-debug.sh – start remote debugging of iTop background tasks script (cron.php). The first two arguments are iTop user and his password (`admin` and `password`) and the third argument is debug server configuration name (default is `localhost`) in PhpStorm which specified through PHP_IDE_CONFIG environment variable ([more details](https://www.jetbrains.com/help/phpstorm/zero-configuration-debugging-cli.html#d13593f7)).
+```
+sudo docker exec my-itop /start-itop-cron-debug.sh [auth_user] [auth_pwd] [php_ide_server_name]
+```
 
 ## Links
 

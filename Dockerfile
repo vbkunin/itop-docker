@@ -13,36 +13,30 @@ RUN apt-get install -y \
     graphviz curl \
     git wget unzip
 
-# Copy configs and scripts
-COPY artifacts/setup-itop-cron.sh /setup-itop-cron.sh
-COPY artifacts/itop-cron.logrotate /etc/logrotate.d/itop-cron
-# Copy update Russian translations script
-COPY artifacts/update-russian-translations.sh /update-russian-translations.sh
-# Copy iTop config-file rights management scripts
-COPY artifacts/make-itop-config-writable.sh /make-itop-config-writable.sh
-COPY artifacts/make-itop-config-read-only.sh /make-itop-config-read-only.sh
-# Copy Tookit installation script
-COPY artifacts/install-toolkit.sh /install-toolkit.sh
-COPY run.sh /run.sh
-RUN chmod +x /*.sh
-
-# Create shortcuts for the right management scripts
-RUN ln -s /make-itop-config-writable.sh /usr/local/bin/conf-w
-RUN ln -s /make-itop-config-read-only.sh /usr/local/bin/conf-ro
-
 # Get iTop
 RUN mkdir -p /tmp/itop
 RUN wget --no-check-certificate -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.6.0-beta/iTop-2.6-beta-4146.zip/download
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 RUN rm -rf /var/www/html/* && mv /tmp/itop/web/* /var/www/html
 
+# Copy services, configs and scripts
+COPY service /etc/service/
+COPY artifacts/itop-cron.logrotate /etc/logrotate.d/itop-cron
+COPY artifacts/apache2.fqdn.conf /etc/apache2/conf-available/fqdn.conf
+COPY artifacts/scripts /
+COPY run.sh /run.sh
+RUN chmod +x -R /etc/service
+RUN chmod +x /*.sh
+RUN a2enconf fqdn
+
+# Create shortcuts for the right management scripts
+RUN ln -s /make-itop-config-writable.sh /usr/local/bin/conf-w
+RUN ln -s /make-itop-config-read-only.sh /usr/local/bin/conf-ro
+
 # Get latest Russian translations
 RUN /update-russian-translations.sh
 
 RUN chown -R www-data:www-data /var/www/html
-
-COPY service /etc/service/
-RUN chmod +x -R /etc/service
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

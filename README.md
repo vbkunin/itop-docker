@@ -19,9 +19,9 @@ sudo docker logs my-itop | grep -C4 "mysql -uadmin -p"
 ```
 or use username *root* with blank password.
 
-Expose MySQL port or iTop extensions folder if you need it:
+Expose iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 80:80 -p 3306:3306 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.6.0
+sudo docker run -d -p 80:80 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.6.0
 ```
 
 ### Image without MySQL
@@ -61,14 +61,20 @@ There are other scripts:
 If you're using this image for development (especially with PhpStorm), there are a few things for you.
 
 - install-xdebug.sh – install [Xdebug](https://xdebug.org) PHP extension and setup it for [remote debugging](https://xdebug.org/docs/remote). Two arguments are `xdebug.remote_port` and `xdebug.idekey` (defaults are `9000` and `PHPSTORM`, respectively).
-```
-sudo docker exec my-itop /install-xdebug.sh [remote_port] [idekey]
-```
+  ```
+  sudo docker exec my-itop /install-xdebug.sh [remote_port] [idekey]
+  ```
 
 - start-itop-cron-debug.sh – start remote debugging of iTop background tasks script (cron.php). The first two arguments are iTop user and his password (`admin` and `password`) and the third argument is debug server configuration name (default is `localhost`) in PhpStorm which specified through PHP_IDE_CONFIG environment variable ([more details](https://www.jetbrains.com/help/phpstorm/zero-configuration-debugging-cli.html#d13593f7)).
-```
-sudo docker exec my-itop /start-itop-cron-debug.sh [auth_user] [auth_pwd] [php_ide_server_name]
-```
+  ```
+  sudo docker exec my-itop /start-itop-cron-debug.sh [auth_user] [auth_pwd] [php_ide_server_name]
+  ```
+
+- enable-mysql-remote-connections.sh – add the `bind-address = 0.0.0.0` directive to the MySQL configuration to allow connections from outside the container.
+  ```
+  sudo docker exec my-itop /enable-mysql-remote-connections.sh
+  ```
+  Do not forget to expose the MySQL port with `-p 3306:3306` when running the container.
 
 ## Links
 

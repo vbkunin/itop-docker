@@ -6,23 +6,24 @@ ARG ITOP_VERSION=2.6.0
 ARG ITOP_FILENAME=iTop-2.6.0-4294.zip
 
 RUN apt-get install -y software-properties-common \
- && add-apt-repository -y ppa:ondrej/php \
- && apt-get update \
- && apt-get install -y \
-    apache2 \
-    php7.1 php7.1-xml php7.1-mysql php7.1-json php7.1-mcrypt php7.1-mbstring php7.1-ldap php7.1-soap php7.1-zip php7.1-gd \
-    graphviz \
-    curl \
-    unzip\
-    git \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+    && add-apt-repository -y ppa:ondrej/php \
+    && apt-get update \
+    && apt-get install -y \
+        apache2 \
+        php7.1 php7.1-xml php7.1-mysql php7.1-json php7.1-mcrypt php7.1-mbstring php7.1-ldap php7.1-soap php7.1-zip php7.1-gd \
+        graphviz \
+        curl \
+        unzip\
+        git \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Get iTop
-RUN mkdir -p /tmp/itop \
-    && curl -SL https://sourceforge.net/projects/itop/files/itop/$ITOP_VERSION/$ITOP_FILENAME/download > /tmp/itop/itop.zip \
+RUN rm -rf /var/www/html/* \
+    && mkdir -p /tmp/itop \
+    && curl -SL -o /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/$ITOP_VERSION/$ITOP_FILENAME/download \
     && unzip /tmp/itop/itop.zip -d /tmp/itop/ \
-    && mv /tmp/itop/web /var/www/html \
+    && mv /tmp/itop/web/* /var/www/html \
     && rm -rf /tmp/itop
 
 # Copy services, configs and scripts

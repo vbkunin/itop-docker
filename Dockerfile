@@ -1,16 +1,17 @@
-FROM local/itop:2.6.0-beta-base
+FROM vbkunin/itop:2.6.0-base
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
-RUN apt-get update && apt-get install -y mariadb-server pwgen
-# Remove pre-installed database
-RUN rm -rf /var/lib/mysql/*
-
-COPY artifacts/create-mysql-admin-user.sh /create-mysql-admin-user.sh
-COPY run.sh /run.sh
-RUN chmod +x /*.sh
+RUN apt-get update && apt-get install -y mariadb-server pwgen \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/mysql/*
+    # Remove pre-installed database
 
 COPY service /etc/service/
-RUN chmod +x -R /etc/service
+COPY artifacts/scripts /
+COPY run.sh /run.sh
+RUN chmod +x -R /etc/service \
+    && chmod +x /*.sh
 
 VOLUME /var/lib/mysql
 

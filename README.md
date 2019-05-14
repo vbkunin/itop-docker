@@ -15,7 +15,7 @@ Then go to [http://localhost:8000/](http://localhost:8000/) to continue the inst
 
 Use this command to get the MySQL user credentials:
 ```
-sudo docker logs my-itop | grep -C4 "mysql -uadmin -p"
+sudo docker logs my-itop | grep -A7 -B1 "Your MySQL user 'admin' has password:"
 ```
 or use username *root* with blank password.
 

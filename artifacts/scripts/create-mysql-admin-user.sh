@@ -21,6 +21,7 @@ mysql -uroot -e "UPDATE mysql.user SET Super_Priv='Y' WHERE user='admin' AND hos
 echo "=> Done!"
 
 echo "========================================================================"
+echo "Your MySQL user 'admin' has password: $PASS"
 echo "You can now connect to this MySQL Server using:"
 echo ""
 echo "    mysql -uadmin -p$PASS -h<host> -P<port>"

@@ -17,6 +17,7 @@ RUN apt-get install -y software-properties-common \
         git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+    && update-alternatives --set php /usr/bin/php7.1
 
 # Get iTop
 RUN rm -rf /var/www/html/* \

@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y mariadb-server pwgen \
     # Remove pre-installed database
 
 COPY service /etc/service/
-COPY artifacts /
+COPY artifacts/scripts /
 COPY run.sh /run.sh
 RUN chmod +x -R /etc/service \
     && chmod +x /*.sh

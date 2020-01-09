@@ -7,9 +7,9 @@ Starting from 2.5.0-beta the image is based on [phusion/baseimage](https://hub.d
 
 ## Usage
 
-Run new iTop 2.6.1 (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 2.7.0-beta (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:2.6.1
+sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:2.7.0-beta
 ```
 Then go to [http://localhost:8000/](http://localhost:8000/) to continue the installation.
 
@@ -21,15 +21,15 @@ or use username *root* with blank password.
 
 Expose iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 8000:80 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.6.1
+sudo docker run -d -p 8000:80 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.7.0-beta
 ```
 
 ### Image without MySQL
 
-Starting from 2.6.0 you can get `base` image without MySQL database server (only Apache and php7.1) to use with your own one:
+Starting from 2.6.0 you can get `base` image without MySQL database server (only Apache and PHP) to use with your own one:
 
 ```
-sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:2.6.1-base
+sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:2.7.0-beta-base
 ```
 
 ### Useful scripts and helpers
@@ -39,7 +39,7 @@ The image ships with several useful scripts you can run like this:
 sudo docker exec my-itop /script-name.sh [script_params]
 ```
 
-If you need the [iTop Toolkit](https://www.itophub.io/wiki/page?id=2_5_0:customization:datamodel#installing_the_toolkit) you can simply get this:
+If you need the [iTop Toolkit](https://www.itophub.io/wiki/page?id=2_7_0:customization:datamodel#installing_the_toolkit) you can simply get this:
 ```
 sudo docker exec my-itop /install-toolkit.sh
 ```
@@ -81,5 +81,5 @@ If you're using this image for development (especially with PhpStorm), there are
  - [Combodo](https://combodo.com)
  - [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/)
  - [iTop Russian community](http://community.itop-itsm.ru)
- - [Some extensions for iTop](https://github.com/knowitop)
+ - [Some extensions for iTop](https://knowitop.ru/store)
 

@@ -17,6 +17,8 @@ echo "=> Creating MySQL admin user with ${_word} password"
 mysql -uroot -e "CREATE USER 'admin'@'%' IDENTIFIED BY '$PASS'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION"
 mysql -uroot -e "UPDATE mysql.user SET Super_Priv='Y' WHERE user='admin' AND host='%';"
+# remove_anonymous_users (from mysql_secure_installation script)
+mysql -uroot -e "DELETE FROM mysql.user WHERE User='';"
 
 echo "=> Done!"
 

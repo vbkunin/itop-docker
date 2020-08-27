@@ -1,6 +1,6 @@
 # Docker image with Combodo iTop
 
-Starting from 2.5.0-beta the image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/) and uses runit to manage services (apache, mysql, etc).
+The image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/) and uses runit to manage services (apache, mysql, etc).
 
 [![](https://images.microbadger.com/badges/version/vbkunin/itop.svg)](http://microbadger.com/images/vbkunin/itop "Get your own version badge on microbadger.com")
 [![](https://images.microbadger.com/badges/image/vbkunin/itop.svg)](https://microbadger.com/images/vbkunin/itop "Get your own image badge on microbadger.com")
@@ -48,7 +48,7 @@ A cron setup helper is aboard:
 ```
 sudo docker exec my-itop /setup-itop-cron.sh Cron Pa$5w0rD
 ```
-Then you should create iTop user account with login *Cron* and password *Pa$5w0rD* and grant him Administrator profile. Starting from v2.3.3 the third argument (optional) is the absolute path to the log file or `--without-logs` key. By default, the log file is `/var/log/itop-cron.log`.
+Then you should create iTop user account with login *Cron* and password *Pa$5w0rD* and grant him Administrator profile. The third argument (optional) is the absolute path to the log file or `--without-logs` key. By default, the log file is `/var/log/itop-cron.log`.
 
 There are other scripts:
 

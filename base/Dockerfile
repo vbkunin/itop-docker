@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:bionic-1.0.0
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive

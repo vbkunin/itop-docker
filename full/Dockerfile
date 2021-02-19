@@ -1,4 +1,4 @@
-FROM vbkunin/itop:2.7.1-base
+FROM vbkunin/itop:2.7.3-base
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 RUN apt-get update && apt-get install -y software-properties-common \
@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y mariadb-server pwgen \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/lib/mysql/*
-    # Remove pre-installed database
+# Remove pre-installed database
 
 COPY service /etc/service/
 COPY artifacts/scripts /

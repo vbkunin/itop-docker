@@ -7,9 +7,9 @@ The image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/basei
 
 ## Usage
 
-Run new iTop 2.7.1 (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 2.7.3 (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:2.7.1
+sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:2.7.3
 ```
 Then go to [http://localhost:8000/](http://localhost:8000/) to continue the installation.
 
@@ -21,7 +21,7 @@ or use username *root* with blank password.
 
 Expose iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 8000:80 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.7.1
+sudo docker run -d -p 8000:80 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:2.7.3
 ```
 
 ### Image without MySQL
@@ -29,7 +29,7 @@ sudo docker run -d -p 8000:80 --name=my-itop -v /home/user/itop-extensions:/var/
 Starting from 2.6.0 you can get `base` image without MySQL database server (only Apache and PHP) to use with your own one:
 
 ```
-sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:2.7.1-base
+sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:2.7.3-base
 ```
 
 ### Useful scripts and helpers

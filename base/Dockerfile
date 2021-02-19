@@ -2,8 +2,8 @@ FROM phusion/baseimage:bionic-1.0.0
 MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG ITOP_VERSION=2.7.1
-ARG ITOP_FILENAME=iTop-2.7.1-5896.zip
+ARG ITOP_VERSION=2.7.2-1
+ARG ITOP_FILENAME=iTop-2.7.2-1-6483.zip
 
 RUN apt-get install -y software-properties-common \
     && add-apt-repository -y ppa:ondrej/php \

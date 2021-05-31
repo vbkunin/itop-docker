@@ -60,9 +60,9 @@ There are other scripts:
 
 If you're using this image for development (especially with PhpStorm), there are a few things for you.
 
-- install-xdebug.sh – install [Xdebug](https://xdebug.org) PHP extension and setup it for [remote debugging](https://xdebug.org/docs/remote). Two arguments are `xdebug.remote_port` and `xdebug.idekey` (defaults are `9000` and `PHPSTORM`, respectively).
+- install-xdebug.sh – install [Xdebug](https://xdebug.org) PHP extension and setup it for [remote debugging](https://xdebug.org/docs/remote). Two arguments are `xdebug.client_port` and `xdebug.idekey` (defaults are `9003` and `PHPSTORM`, respectively).
   ```
-  sudo docker exec my-itop /install-xdebug.sh [remote_port] [idekey]
+  sudo docker exec my-itop /install-xdebug.sh [client_port] [idekey]
   ```
 
 - start-itop-cron-debug.sh – start remote debugging of iTop background tasks script (cron.php). The first two arguments are iTop user and his password (`admin` and `password`) and the third argument is debug server configuration name (default is `localhost`) in PhpStorm which specified through PHP_IDE_CONFIG environment variable ([more details](https://www.jetbrains.com/help/phpstorm/zero-configuration-debugging-cli.html#d13593f7)).

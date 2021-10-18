@@ -1,23 +1,23 @@
 FROM phusion/baseimage:bionic-1.0.0
-MAINTAINER Vladimir Kunin <vladimir@knowitop.ru>
+MAINTAINER Vladimir Kunin <we@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG ITOP_VERSION=3.0.0-beta
 ARG ITOP_FILENAME=iTop-3.0.0-beta-7312.zip
 
-RUN apt-get install -y software-properties-common \
+RUN apt-get install -y software-properties-common ca-certificates \
     && add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
     && apt-get install -y \
         apache2 \
-        php7.3 php7.3-xml php7.3-mysql php7.3-json php7.3-mbstring php7.3-ldap php7.3-soap php7.3-zip php7.3-gd php-apcu \
+        php7.4 php7.4-xml php7.4-mysql php7.4-json php7.4-mbstring php7.4-ldap php7.4-soap php7.4-zip php7.4-gd php-apcu \
         graphviz \
         curl \
         unzip\
         git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && update-alternatives --set php /usr/bin/php7.3
+    && update-alternatives --set php /usr/bin/php7.4
 
 # Get iTop
 RUN rm -rf /var/www/html/* \

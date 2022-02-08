@@ -7,9 +7,9 @@ The image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/basei
 
 ## Usage
 
-Run new iTop 3.0.0-beta (see tags for other iTop versions) container named *my-itop*:
+Run new iTop 3.0.0 (see tags for other iTop versions) container named *my-itop*:
 ```
-sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:3.0.0-beta
+sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:3.0.0
 ```
 Then go to [http://localhost:8000/](http://localhost:8000/) to continue the installation.
 
@@ -21,15 +21,15 @@ or use username *root* with blank password.
 
 Expose iTop extensions folder if you need it:
 ```
-sudo docker run -d -p 8000:80 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:3.0.0-beta
+sudo docker run -d -p 8000:80 --name=my-itop -v /home/user/itop-extensions:/var/www/html/extensions vbkunin/itop:3.0.0
 ```
 
 ### Image without MySQL
 
-Starting from 2.6.0 you can get `base` image without MySQL database server (only Apache and PHP) to use with your own one:
+Уou can get `base` image without MySQL database server (only Apache and PHP) to use with your own one:
 
 ```
-sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:3.0.0-beta-base
+sudo docker run -d -p 8000:80 --name=my-itop vbkunin/itop:3.0.0-base
 ```
 
 ### Useful scripts and helpers
@@ -54,7 +54,6 @@ There are other scripts:
 
  - make-itop-config-writable.sh (or you can use `conf-w` shortcut without the leading slash: `docker exec my-itop conf-w`)
  - make-itop-config-read-only.sh (or `conf-ro` shortcut: `docker exec my-itop conf-ro`)
- - update-russian-translations.sh - pull and install latest version from https://github.com/itop-itsm-ru/itop-rus
 
 #### Developer's corner
 

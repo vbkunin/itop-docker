@@ -1,4 +1,4 @@
-FROM vbkunin/itop:3.0.0-base
+FROM vbkunin/itop:3.0.1-base
 MAINTAINER Vladimir Kunin <we@knowitop.ru>
 
 #RUN apt-get update && apt-get install -y software-properties-common \

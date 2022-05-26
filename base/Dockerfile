@@ -2,8 +2,8 @@ FROM phusion/baseimage:focal-1.1.0
 MAINTAINER Vladimir Kunin <we@knowitop.ru>
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG ITOP_VERSION=3.0.0
-ARG ITOP_FILENAME=iTop-3.0.0-8663.zip
+ARG ITOP_VERSION=3.0.1
+ARG ITOP_FILENAME=iTop-3.0.1-9191.zip
 
 RUN apt-get install -y software-properties-common ca-certificates \
     && add-apt-repository -y ppa:ondrej/php \

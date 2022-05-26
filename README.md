@@ -48,7 +48,7 @@ A cron setup helper is aboard:
 ```
 sudo docker exec my-itop /setup-itop-cron.sh Cron Pa$5w0rD
 ```
-Then you should create iTop user account with login *Cron* and password *Pa$5w0rD* and grant him Administrator profile. The third argument (optional) is the absolute path to the log file or `--without-logs` key. By default, the log file is `/var/log/itop-cron.log`.
+Then you should create iTop user account with login *Cron* and password *Pa$5w0rD* and grant him Administrator profile. The third argument (optional) is the absolute path to the log file or `--without-logs` key. By default, the log file is `/var/www/html/log/cron.log`.
 
 There are other scripts:
 

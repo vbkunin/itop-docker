@@ -1,4 +1,4 @@
-/var/log/itop-cron.log {
+/var/www/html/log/cron.log {
   rotate 10
   size=16M
   compress

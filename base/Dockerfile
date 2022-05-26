@@ -14,7 +14,6 @@ RUN apt-get install -y software-properties-common ca-certificates \
         graphviz \
         curl \
         unzip\
-        git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && update-alternatives --set php /usr/bin/php7.4
@@ -32,15 +31,24 @@ COPY service /etc/service/
 COPY artifacts/scripts /
 COPY artifacts/itop-cron.logrotate /etc/logrotate.d/itop-cron
 COPY artifacts/apache2.fqdn.conf /etc/apache2/conf-available/fqdn.conf
+COPY artifacts/apache2.security.conf /etc/apache2/conf-available/security.conf
+
 COPY run.sh /run.sh
 RUN chmod +x -R /etc/service \
     && chmod +x /*.sh \
-    && a2enconf fqdn
+    && a2enconf fqdn \
+    && a2enconf security \
+    && a2enmod headers
 
 # Create shortcuts for the right management scripts and fix rights
 RUN ln -s /make-itop-config-writable.sh /usr/local/bin/conf-w \
     && ln -s /make-itop-config-read-only.sh /usr/local/bin/conf-ro \
-    && chown -R www-data:www-data /var/www/html
+    && chown -R www-data:www-data /var/www/html \
+    && find /var/www/html/ -type d -exec chmod 555 {} \; \
+    && find /var/www/html/ -type f -exec chmod 444 {} \; \
+    && chmod u+w /var/www/html /var/www/html/log /var/www/html/data
+
+WORKDIR /var/www/html
 
 EXPOSE 80
 

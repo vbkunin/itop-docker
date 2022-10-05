@@ -1,5 +1,8 @@
 #!/bin/bash
 
+chown -R www-data:www-data /var/www/html/conf
+chown -R www-data:www-data /var/www/html/data
+
 VOLUME_HOME="/var/lib/mysql"
 
 if [[ ! -d $VOLUME_HOME/mysql ]]; then

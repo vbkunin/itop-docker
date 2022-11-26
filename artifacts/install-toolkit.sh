@@ -1,6 +1,6 @@
 #!/bin/bash
 APP_PATH=/var/www/html
-TOOLKIT_URL=http://www.combodo.com/documentation/iTopDataModelToolkit-2.3.zip
+TOOLKIT_URL=https://github.com/Combodo/itop-toolkit-community/archive/refs/tags/3.0.0.zip
 TOOLKIT_FOLDER=$APP_PATH/toolkit
 
 if [[ -d $APP_PATH ]]; then

@@ -26,7 +26,7 @@ if [[ $LOG_FILE != /dev/null ]]; then
 	chown www-data:www-data $LOG_FILE;
 fi
 
-echo "*/5 * * * * www-data /usr/bin/php /var/www/html/webservices/cron.php --auth_user=$USER --auth_pwd=$PASSWORD >> $LOG_FILE 2>&1" > /etc/cron.d/itop
+echo "*/1 * * * * www-data /usr/bin/php /var/www/html/webservices/cron.php --auth_user=$USER --auth_pwd=$PASSWORD >> $LOG_FILE 2>&1" > /etc/cron.d/itop
 echo -e "\nThe following job has been added to cron (/etc/cron.d/itop):"
 cat /etc/cron.d/itop
 

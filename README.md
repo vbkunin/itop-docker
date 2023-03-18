@@ -17,7 +17,6 @@ Use this command to get the MySQL user credentials:
 ```shell
 sudo docker logs my-itop | grep -A7 -B1 "Your MySQL user 'admin' has password:"
 ```
-or use username *root* with blank password.
 
 If you want to persist iTop configuration and/or MySQL data between the container recreations, mount it as a volume:
 ```shell

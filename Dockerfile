@@ -1,26 +1,36 @@
 # syntax=docker/dockerfile:1
 
+ARG ITOP_TMP=/tmp/itop
+ARG ITOP_TMP_WEB=${ITOP_TMP:?}/web
+
 FROM ubuntu AS code
+
 ARG DEBIAN_FRONTEND=noninteractive
 ARG ITOP_DOWNLOAD_URL
+
+ARG ITOP_TMP
+ARG ITOP_TMP_WEB
 
 RUN apt-get update && apt-get install -y curl unzip
 
 # Get iTop and fix rights
-RUN mkdir -p /tmp/itop \
-    && curl -SL -o /tmp/itop/itop.zip ${ITOP_DOWNLOAD_URL:?} \
-    && unzip /tmp/itop/itop.zip -d /tmp/itop/ \
-    && find /tmp/itop/web/ -type d -exec chmod 555 {} \; \
-    && find /tmp/itop/web/ -type f -exec chmod 444 {} \; \
-    && chmod u+w /tmp/itop/web /tmp/itop/web/log /tmp/itop/web/data /tmp/itop/web/conf
+RUN mkdir -p ${ITOP_TMP:?} \
+    && curl -SL -o ${ITOP_TMP}/itop.zip ${ITOP_DOWNLOAD_URL:?} \
+    && unzip ${ITOP_TMP}/itop.zip -d ${ITOP_TMP}/ \
+    && chmod -R a=r ${ITOP_TMP_WEB} \
+    && find ${ITOP_TMP_WEB} -type d -exec chmod a+x {} \; \
+    && chmod u+w ${ITOP_TMP_WEB} ${ITOP_TMP_WEB}/log ${ITOP_TMP_WEB}/data ${ITOP_TMP_WEB}/conf
 
 
 FROM phusion/baseimage:jammy-1.0.1 AS base
+
 LABEL title="Docker image with Combodo iTop"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL url="https://github.com/vbkunin/itop-docker"
 
 ARG DEBIAN_FRONTEND=noninteractive
+
+ARG ITOP_TMP_WEB
 
 # Install and configure Apache Httpd and PHP
 RUN apt-get update && apt-get install -y software-properties-common ca-certificates \
@@ -28,7 +38,7 @@ RUN apt-get update && apt-get install -y software-properties-common ca-certifica
     && apt-get update \
     && apt-get install -y \
         apache2 \
-        php8.0 php8.0-xml php8.0-mysql php8.0-mbstring php8.0-ldap php8.0-soap php8.0-zip php8.0-gd php8.0-curl php8.0-apcu \
+        php8.0 php8.0-xml php8.0-mysql php8.0-mbstring php8.0-ldap php8.0-soap php8.0-zip php8.0-gd php8.0-curl php8.0-apcu php8.0-imap \
         graphviz \
         curl \
         unzip\
@@ -53,7 +63,7 @@ RUN a2enconf fqdn \
     && rm -rf /var/www/html
 
 # Copy iTop code
-COPY --link --from=code --chown=www-data:www-data /tmp/itop/web /var/www/html
+COPY --from=code --chown=www-data:www-data ${ITOP_TMP_WEB:?} /var/www/html
 
 WORKDIR /var/www/html
 

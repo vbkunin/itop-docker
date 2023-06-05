@@ -83,6 +83,40 @@ If you're using this image for development (especially with PhpStorm), there are
   ```
   Do not forget to expose the MySQL port with `-p 3306:3306` when running the container.
 
+## Building images
+
+The project uses [multi-stage builds](https://docs.docker.com/build/building/multi-stage/) and a single Dockerfile to build both `base` (only Apache and PHP) and `full` images. Therefore, you have to specify the correct `--target` and the corresponding `--tag` when running the `docker build` command. 
+
+```shell
+DOCKER_BUILDKIT=1 docker build \
+  --target=base \
+  --tag vbkunin/itop:3.0.2-base \
+  --build-arg ITOP_DOWNLOAD_URL="https://sourceforge.net/projects/itop/files/itop/3.0.2-1/iTop-3.0.2-1-9957.zip/download" \
+  -f Dockerfile .
+```
+
+```shell
+DOCKER_BUILDKIT=1 docker build \
+  --target=full \
+  --tag vbkunin/itop:3.0.2 \
+  --build-arg ITOP_DOWNLOAD_URL="https://sourceforge.net/projects/itop/files/itop/3.0.2-1/iTop-3.0.2-1-9957.zip/download" \
+  -f Dockerfile .
+```
+
+The only mandatory build argument `ITOP_DOWNLOAD_URL` must contain a valid URL to the zip archive with the iTop release.
+
+Multi-platform images for the Docker Hub are created and pushed using the `docker buildx` client:
+
+```shell
+docker buildx build \
+  --tag vbkunin/itop:"${IMAGE_TAG:?}" \
+  --platform="linux/arm64,linux/amd64" \
+  --push \
+  --target="${BUILD_TARGET:?}" \
+  --build-arg ITOP_DOWNLOAD_URL="${ITOP_DOWNLOAD_URL:?}" \
+  -f Dockerfile .
+```
+
 ## Links
 
  - [Combodo](https://combodo.com)

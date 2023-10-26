@@ -6,7 +6,7 @@ else
   REMOTE_HOST=host.docker.internal
 fi
 
-apt-get update && apt-get install -y php8.0-xdebug
+apt-get update && apt-get install -y php8.1-xdebug
 
 XDEBUG_CONF=$(php -i | grep xdebug.ini | cut -d ',' -f1)
 echo zend_extension=xdebug.so > ${XDEBUG_CONF}

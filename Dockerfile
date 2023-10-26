@@ -25,7 +25,7 @@ RUN mkdir -p ${ITOP_TMP:?} \
 FROM phusion/baseimage:jammy-1.0.1 AS base
 
 LABEL title="Docker image with Combodo iTop"
-LABEL version="1.0.1"
+LABEL version="1.1.0"
 LABEL url="https://github.com/vbkunin/itop-docker"
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -38,13 +38,13 @@ RUN apt-get update && apt-get install -y software-properties-common ca-certifica
     && apt-get update \
     && apt-get install -y \
         apache2 \
-        php8.0 php8.0-xml php8.0-mysql php8.0-mbstring php8.0-ldap php8.0-soap php8.0-zip php8.0-gd php8.0-curl php8.0-apcu php8.0-imap \
+        php8.1 php8.1-xml php8.1-mysql php8.1-mbstring php8.1-ldap php8.1-soap php8.1-zip php8.1-gd php8.1-curl php8.1-apcu php8.1-imap \
         graphviz \
         curl \
         unzip\
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && update-alternatives --set php /usr/bin/php8.0
+    && update-alternatives --set php /usr/bin/php8.1
 
 # Copy services, configs and scripts
 COPY base/service /etc/service/

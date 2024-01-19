@@ -1,9 +1,9 @@
 # Docker image with Combodo iTop
 
-![Docker Pulls](https://img.shields.io/docker/pulls/vbkunin/itop?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Fvbkunin%2Fitop)
-![Docker Stars](https://img.shields.io/docker/stars/vbkunin/itop?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Fvbkunin%2Fitop)
-![GitHub forks](https://img.shields.io/github/forks/vbkunin/itop-docker?link=https%3A%2F%2Fgithub.com%2Fvbkunin%2Fitop-docker)
-![GitHub Repo stars](https://img.shields.io/github/stars/vbkunin/itop-docker?link=https%3A%2F%2Fgithub.com%2Fvbkunin%2Fitop-docker)
+[![Docker Pulls](https://img.shields.io/docker/pulls/vbkunin/itop?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Fvbkunin%2Fitop)](https://hub.docker.com/repository/docker/vbkunin/itop)
+[![Docker Stars](https://img.shields.io/docker/stars/vbkunin/itop?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Fvbkunin%2Fitop)](https://hub.docker.com/repository/docker/vbkunin/itop)
+[![GitHub forks](https://img.shields.io/github/forks/vbkunin/itop-docker?link=https%3A%2F%2Fgithub.com%2Fvbkunin%2Fitop-docker)](https://github.com/vbkunin/itop-docker)
+[![GitHub Repo stars](https://img.shields.io/github/stars/vbkunin/itop-docker?link=https%3A%2F%2Fgithub.com%2Fvbkunin%2Fitop-docker)](https://github.com/vbkunin/itop-docker)
 
 GitHub repo – https://github.com/vbkunin/itop-docker
 

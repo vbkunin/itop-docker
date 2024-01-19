@@ -5,8 +5,6 @@
 [![GitHub forks](https://img.shields.io/github/forks/vbkunin/itop-docker?link=https%3A%2F%2Fgithub.com%2Fvbkunin%2Fitop-docker)](https://github.com/vbkunin/itop-docker)
 [![GitHub Repo stars](https://img.shields.io/github/stars/vbkunin/itop-docker?link=https%3A%2F%2Fgithub.com%2Fvbkunin%2Fitop-docker)](https://github.com/vbkunin/itop-docker)
 
-GitHub repo – https://github.com/vbkunin/itop-docker
-
 The image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/) and uses runit to manage services (apache, mysql, etc).
 
 ## Usage

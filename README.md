@@ -1,9 +1,11 @@
 # Docker image with Combodo iTop
 
-The image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/) and uses runit to manage services (apache, mysql, etc).
+![Docker Pulls](https://img.shields.io/docker/pulls/vbkunin/itop?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Fvbkunin%2Fitop)
+![Docker Stars](https://img.shields.io/docker/stars/vbkunin/itop?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Fvbkunin%2Fitop)
+![GitHub forks](https://img.shields.io/github/forks/vbkunin/itop-docker?link=https%3A%2F%2Fgithub.com%2Fvbkunin%2Fitop-docker)
+![GitHub Repo stars](https://img.shields.io/github/stars/vbkunin/itop-docker?link=https%3A%2F%2Fgithub.com%2Fvbkunin%2Fitop-docker)
 
-[![](https://images.microbadger.com/badges/version/vbkunin/itop.svg)](http://microbadger.com/images/vbkunin/itop "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/vbkunin/itop.svg)](https://microbadger.com/images/vbkunin/itop "Get your own image badge on microbadger.com")
+The image is based on [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/) and uses runit to manage services (apache, mysql, etc).
 
 ## Usage
 

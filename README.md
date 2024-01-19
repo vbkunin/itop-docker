@@ -90,16 +90,16 @@ The project uses [multi-stage builds](https://docs.docker.com/build/building/mul
 ```shell
 DOCKER_BUILDKIT=1 docker build \
   --target=base \
-  --tag vbkunin/itop:3.1.0-base \
-  --build-arg ITOP_DOWNLOAD_URL="https://sourceforge.net/projects/itop/files/itop/3.1.0-2/iTop-3.1.0-2-11973.zip/download" \
+  --tag vbkunin/itop:3.1.1-base \
+  --build-arg ITOP_DOWNLOAD_URL="https://sourceforge.net/projects/itop/files/itop/3.1.1-1/iTop-3.1.1-1-12561.zip/download" \
   -f Dockerfile .
 ```
 
 ```shell
 DOCKER_BUILDKIT=1 docker build \
   --target=full \
-  --tag vbkunin/itop:3.1.0 \
-  --build-arg ITOP_DOWNLOAD_URL="https://sourceforge.net/projects/itop/files/itop/3.1.0-2/iTop-3.1.0-2-11973.zip/download" \
+  --tag vbkunin/itop:3.1.1 \
+  --build-arg ITOP_DOWNLOAD_URL="https://sourceforge.net/projects/itop/files/itop/3.1.1-1/iTop-3.1.1-1-12561.zip/download" \
   -f Dockerfile .
 ```
 

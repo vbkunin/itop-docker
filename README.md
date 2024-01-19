@@ -64,8 +64,8 @@ Then you should create iTop user account with login *Cron* and password *Pa$5w0r
 
 There are other scripts:
 
- - make-itop-config-writable.sh (or you can use `conf-w` shortcut without the leading slash: `docker exec my-itop conf-w`)
- - make-itop-config-read-only.sh (or `conf-ro` shortcut: `docker exec my-itop conf-ro`)
+- make-itop-config-writable.sh (or you can use `conf-w` shortcut without the leading slash: `docker exec my-itop conf-w`)
+- make-itop-config-read-only.sh (or `conf-ro` shortcut: `docker exec my-itop conf-ro`)
 
 #### Developer's corner
 
@@ -89,7 +89,7 @@ If you're using this image for development (especially with PhpStorm), there are
 
 ## Building images
 
-The project uses [multi-stage builds](https://docs.docker.com/build/building/multi-stage/) and a single Dockerfile to build both `base` (only Apache and PHP) and `full` images. Therefore, you have to specify the correct `--target` and the corresponding `--tag` when running the `docker build` command. 
+The project uses [multi-stage builds](https://docs.docker.com/build/building/multi-stage/) and a single Dockerfile to build both `base` (only Apache and PHP) and `full` images. Therefore, you have to specify the correct `--target` and the corresponding `--tag` when running the `docker build` command.
 
 ```shell
 DOCKER_BUILDKIT=1 docker build \
@@ -123,6 +123,7 @@ docker buildx build \
 
 ## Links
 
+ - [GitHub repo](https://github.com/vbkunin/itop-docker)
  - [Combodo](https://combodo.com)
  - [phusion/baseimage](https://hub.docker.com/r/phusion/baseimage/)
  - [iTop Russian community forum](http://community.itop-itsm.ru) & [Telegram group](https://t.me/itopitsmru)

@@ -22,10 +22,10 @@ RUN mkdir -p ${ITOP_TMP:?} \
     && chmod u+w ${ITOP_TMP_WEB} ${ITOP_TMP_WEB}/log ${ITOP_TMP_WEB}/data ${ITOP_TMP_WEB}/conf
 
 
-FROM phusion/baseimage:jammy-1.0.1 AS base
+FROM phusion/baseimage:noble-1.0.2 AS base
 
 LABEL title="Docker image with Combodo iTop"
-LABEL version="1.1.0"
+LABEL version="1.2.0"
 LABEL url="https://github.com/vbkunin/itop-docker"
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -34,17 +34,16 @@ ARG ITOP_TMP_WEB
 
 # Install and configure Apache Httpd and PHP
 RUN apt-get update && apt-get install -y software-properties-common ca-certificates \
-    && add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
     && apt-get install -y \
         apache2 \
-        php8.1 php8.1-xml php8.1-mysql php8.1-mbstring php8.1-ldap php8.1-soap php8.1-zip php8.1-gd php8.1-curl php8.1-apcu php8.1-imap \
+        php8.3 php8.3-xml php8.3-mysql php8.3-mbstring php8.3-ldap php8.3-soap php8.3-zip php8.3-gd php8.3-curl php8.3-apcu php8.3-imap \
         graphviz \
         curl \
         unzip\
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && update-alternatives --set php /usr/bin/php8.1
+    && update-alternatives --set php /usr/bin/php8.3
 
 # Copy services, configs and scripts
 COPY base/service /etc/service/
@@ -74,7 +73,7 @@ HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ || exit 1
 
 FROM base AS full
 
-RUN apt-get update && apt-get install -y mariadb-server-10.6 pwgen ca-certificates \
+RUN apt-get update && apt-get install -y mariadb-server pwgen ca-certificates \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/lib/mysql/*

@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-exec /usr/sbin/apachectl -DNO_DETACH -k start
+
+exec /usr/sbin/apachectl -DFOREGROUND -k start

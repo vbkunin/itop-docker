@@ -25,12 +25,15 @@ RUN mkdir -p ${ITOP_TMP:?} \
 FROM phusion/baseimage:noble-1.0.2 AS base
 
 LABEL title="Docker image with Combodo iTop"
-LABEL version="1.2.0"
+LABEL version="1.3.0"
 LABEL url="https://github.com/vbkunin/itop-docker"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 ARG ITOP_TMP_WEB
+
+ENV LOG_STDOUT=/var/www/html/log/setup.log:itop-setup,/var/www/html/log/cron.log:itop-cron,/var/log/apache2/access.log:apache-access \
+    LOG_STDERR=/var/www/html/log/error.log:itop-error,/var/log/apache2/error.log:apache-error
 
 # Install and configure Apache Httpd and PHP
 RUN apt-get update && apt-get install -y software-properties-common ca-certificates \

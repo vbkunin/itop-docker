@@ -108,6 +108,14 @@ volumes:
   db-volume:
 ```
 
+### Deploy with Easypanel
+
+[Easypanel](https://easypanel.io) is a self-hosted Docker deployment platform, and iTop has a one-click deployment template there.
+
+[![Deploy on Easypanel](https://easypanel.io/img/deploy-on-easypanel-40.svg)](https://easypanel.io/templates/itop)
+
+The template sets up persistent volumes for the app data and the bundled MySQL database automatically.
+
 ### Useful scripts and helpers
 
 The image ships with several useful scripts you can run like this:

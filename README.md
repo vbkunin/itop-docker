@@ -62,6 +62,7 @@ services:
     volumes:
       - ./itop/conf:/var/www/html/conf
       - ./itop/extensions:/var/www/html/extensions
+      - ./itop/env-production:/var/www/html/env-production
     post_start:
       - command: chown -R www-data:www-data /var/www/html/conf
         user: root
@@ -96,6 +97,7 @@ services:
     volumes:
       - ./itop/conf:/var/www/html/conf
       - ./itop/extensions:/var/www/html/extensions
+      - ./itop/env-production:/var/www/html/env-production
       - db-volume:/var/lib/mysql
     environment:
       MYSQL_PASS: change_me # or grep the generated password from the log when the container is first started.
